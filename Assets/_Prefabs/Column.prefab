@@ -58,8 +58,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ColumnNum: 0
   EmptySlots: 7
-  candyManager: {fileID: 0}
-  canSpawn: 0
 --- !u!1001 &682473719355497176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -664,6 +662,10 @@ PrefabInstance:
     - target: {fileID: 427293356150605105, guid: 3032ead56f6963a4e9077baf0ad6cb41, type: 3}
       propertyPath: m_Name
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450400502301549827, guid: 3032ead56f6963a4e9077baf0ad6cb41, type: 3}
+      propertyPath: nextType
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3032ead56f6963a4e9077baf0ad6cb41, type: 3}

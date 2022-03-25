@@ -48,6 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6a2f76adfb83e4da71178a382e3777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CandyPrefab: {fileID: 1172130218159279286, guid: 210b2f5103e226541b4d8334b6a6d651, type: 3}
-  nextType: 0
+  nextType: 5
   isNextBomb: 0
+  isNextBox: 0

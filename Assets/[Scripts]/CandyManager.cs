@@ -29,13 +29,14 @@ public class CandyManager : MonoBehaviour
         }
     }
 
-    public GameObject GetCandy(Vector3 position, CandyType type, bool isBomb, bool isBlock)
+    public GameObject GetCandy(Vector3 position, CandyType type, bool isBomb, bool isBlock, int inColumn)
     {
         var newCandy = candyPool.Dequeue();
         newCandy.SetActive(true);
         newCandy.GetComponent<CandyBehaviour>().type = type;
         newCandy.GetComponent<CandyBehaviour>().isBomb = isBomb;
         newCandy.GetComponent<CandyBehaviour>().isBlock = isBlock;
+        newCandy.GetComponent<CandyBehaviour>().ColRow.x = inColumn;
         newCandy.GetComponent<CandyBehaviour>().swapTrigger = true;
         newCandy.transform.position = position;
         return newCandy;

@@ -18,8 +18,9 @@ public class CandyFactory : MonoBehaviour
     {
         if (type == CandyType.NONE)
         {
-            var randomCandy = Random.Range(0, 5);
+            var randomCandy = Random.Range(0, 6);
             type = (CandyType)randomCandy;
+            //Debug.Log(type.ToString() + randomCandy);
         }
 
         GameObject tempCandy = Instantiate(CandyPrefab);

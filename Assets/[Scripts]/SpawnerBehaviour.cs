@@ -16,10 +16,10 @@ public class SpawnerBehaviour : MonoBehaviour
         candyManager = GameObject.FindWithTag("GameController").GetComponent<CandyManager>();
     }
 
-    public void SpawnCandy()
+    public void SpawnCandy(int inColumn)
     {
-        SetNextColour(Random.Range(0, 5));
-        candyManager.GetCandy(transform.position, nextType, isNextBomb, isNextBox);
+        SetNextColour(Random.Range(0, 6));
+        candyManager.GetCandy(transform.position, nextType, isNextBomb, isNextBox, inColumn);
     }
 
     void SetNextColour(int colourValue)

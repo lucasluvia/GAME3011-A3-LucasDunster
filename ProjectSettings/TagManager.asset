@@ -7,6 +7,7 @@ TagManager:
   - Row
   - DetectorNode
   - SpawnerNode
+  - CandyRowTrigger
   layers:
   - Default
   - TransparentFX

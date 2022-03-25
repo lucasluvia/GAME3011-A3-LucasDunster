@@ -15,6 +15,7 @@ public class CandyBehaviour : MonoBehaviour
     public bool isBomb = false;
     public bool isBlock = false;
 
+    public bool isSelected;
 
     public Vector2 ColRow;
 

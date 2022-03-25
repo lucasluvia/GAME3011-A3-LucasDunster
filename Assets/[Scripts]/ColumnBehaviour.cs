@@ -18,17 +18,23 @@ public class ColumnBehaviour : MonoBehaviour
         spawnerBehaviour = GetComponentInChildren<SpawnerBehaviour>();
     }
 
+    float elapsed = 0f;
     void Update()
     {
-        if (EmptySlots > 0)
+        elapsed += Time.deltaTime;
+        if (elapsed >= 1f)
         {
-            if (Time.frameCount % 180 == 0 && candyManager.HasCandies())
-            {
-                spawnerBehaviour.SpawnCandy();
-                EmptySlots--;
-            }
+            elapsed = elapsed % 1f;
+            if (EmptySlots > 0 && candyManager.HasCandies())
+                SpawnNewCandy();
         }
 
+    }
+
+    void SpawnNewCandy()
+    {
+        spawnerBehaviour.SpawnCandy(ColumnNum);
+        EmptySlots--;
     }
 
 }
