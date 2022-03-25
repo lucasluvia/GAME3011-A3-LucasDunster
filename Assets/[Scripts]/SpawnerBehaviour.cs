@@ -9,27 +9,17 @@ public class SpawnerBehaviour : MonoBehaviour
 
     public CandyType nextType;
     public bool isNextBomb = false;
+    public bool isNextBox = false;
 
     void Start()
     {
         candyManager = GameObject.FindWithTag("GameController").GetComponent<CandyManager>();
-
     }
 
     public void SpawnCandy()
     {
         SetNextColour(Random.Range(0, 5));
-
-        if (!isNextBomb)
-            candyManager.GetCandy(transform.position, nextType, false, false);
-        else
-            candyManager.GetCandy(transform.position, nextType, true, false);
-
-        
-
-        
-
-
+        candyManager.GetCandy(transform.position, nextType, isNextBomb, isNextBox);
     }
 
     void SetNextColour(int colourValue)

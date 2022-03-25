@@ -8,20 +8,19 @@ public class ColumnBehaviour : MonoBehaviour
     public static int SlotsInColumn = 7;
     public int EmptySlots = 7;
 
-    [SerializeField] CandyManager candyManager;
+    CandyManager candyManager;
     SpawnerBehaviour spawnerBehaviour;
 
-    [SerializeField] bool canSpawn;
 
     void Start()
     {
+        candyManager = GameObject.FindWithTag("GameController").GetComponent<CandyManager>();
         spawnerBehaviour = GetComponentInChildren<SpawnerBehaviour>();
     }
 
     void Update()
     {
-
-        if (canSpawn && EmptySlots > 0)
+        if (EmptySlots > 0)
         {
             if (Time.frameCount % 180 == 0 && candyManager.HasCandies())
             {
