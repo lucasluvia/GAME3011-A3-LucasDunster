@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Row
   - DetectorNode
+  - SpawnerNode
   layers:
   - Default
   - TransparentFX
