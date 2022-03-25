@@ -6,5 +6,13 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    // Game Controller Script - TBA
+    [Header("Candy Types")]
+    public Sprite RedCandy;
+    public Sprite OrangeCandy;
+    public Sprite YellowCandy;
+    public Sprite GreenCandy;
+    public Sprite BlueCandy;
+    public Sprite PurpleCandy;
+
+
 }
