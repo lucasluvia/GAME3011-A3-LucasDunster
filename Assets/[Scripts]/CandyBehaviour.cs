@@ -7,15 +7,22 @@ using UnityEngine.UI;
 public class CandyBehaviour : MonoBehaviour
 {
     GameController gameController;
-    Image image;
+    public Image image;
+    GameObject column;
 
     public CandyType type = CandyType.NONE;
     public bool swapTrigger = true;
     public bool isBomb = false;
+    public bool isBlock = false;
+
+
+    public Vector2 ColRow;
+
     
     void Start()
     {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        column = transform.parent.gameObject;
         image = GetComponent<Image>();
     }
 

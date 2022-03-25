@@ -26,9 +26,9 @@ public class GameController : MonoBehaviour
 
     public void SwapTiles(CandyBehaviour c1, CandyBehaviour c2)
     {
-        if ((c1.type == CandyType.BOX || c1.type == CandyType.NONE) || 
-            (c2.type == CandyType.BOX || c2.type == CandyType.NONE) ||
-            (c1.type == c2.type))
+        if ((c1.type == CandyType.BOX || c1.type == CandyType.NONE) ||  // make sure c1 is movable and has a type assigned
+            (c2.type == CandyType.BOX || c2.type == CandyType.NONE) ||  // make sure c2 is movable and has a type assigned
+            (c1.type == c2.type))                                       // make sure c1 and c2 are unique to one another
         {
             return;
         }

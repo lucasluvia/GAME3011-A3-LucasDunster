@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 731144258051728561}
+  - component: {fileID: 1024302562711278597}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -43,6 +44,22 @@ RectTransform:
   m_AnchoredPosition: {x: -450, y: 0}
   m_SizeDelta: {x: 100, y: 925}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1024302562711278597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932147922519569585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856671afd0b8cde4ebe973b73f3c3796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColumnNum: 0
+  EmptySlots: 7
+  candyManager: {fileID: 0}
+  canSpawn: 0
 --- !u!1001 &682473719355497176
 PrefabInstance:
   m_ObjectHideFlags: 0
