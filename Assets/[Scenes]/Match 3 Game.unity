@@ -913,6 +913,7 @@ MonoBehaviour:
   GreenBomb: {fileID: 21300000, guid: 950c66cedc5b9ab41a5adb49bb47074b, type: 3}
   BlueBomb: {fileID: 21300000, guid: 19a072425c5f2a642bbb3ebed620c1f8, type: 3}
   PurpleBomb: {fileID: 21300000, guid: 91cf37e0e6b57f444863db2a9587eafb, type: 3}
+  candyManager: {fileID: 631517975}
 --- !u!114 &631517974
 MonoBehaviour:
   m_ObjectHideFlags: 0

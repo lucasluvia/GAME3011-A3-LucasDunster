@@ -23,12 +23,19 @@ public class GameController : MonoBehaviour
     public Sprite PurpleBomb;
 
     CandyBehaviour temp;
+    public CandyManager candyManager;
+
+
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            CheckForMatches();
+            CheckForVMatches();
+        }
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            CheckForHMatches();
         }
         if(Input.GetKeyDown(KeyCode.P))
         {
@@ -58,10 +65,11 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void CheckForMatches()
+    public void CheckForVMatches()
     {
-        ToggleMatchingPause(true);
-        ToggleSpawningPause(true);
+        //ToggleMatchingPause(true);
+        //ToggleSpawningPause(true);
+
 
         CheckColumn(0);
         CheckColumn(1);
@@ -70,143 +78,273 @@ public class GameController : MonoBehaviour
         CheckColumn(4);
         CheckColumn(5);
         CheckColumn(6);
-
+        
+        //ToggleSpawningPause(false);
     }
+
+    public void CheckForHMatches()
+    {
+
+        CheckRow(6);
+        CheckRow(5);
+        CheckRow(4);
+        CheckRow(3);
+        CheckRow(2);
+        CheckRow(1);
+        CheckRow(0);
+    }
+
 
     private void CheckColumn(int col)
     {
-        int R_inCol;
-        int O_inCol;
-        int Y_inCol;
-        int G_inCol;
-        int B_inCol;
-        int P_inCol;
+        int currentCountC = 0;
 
-        bool checkRed;
-        bool checkOrange;
-        bool checkYellow;
-        bool checkGreen;
-        bool checkBlue;
-        bool checkPurple;
+        List<GameObject> PossibleChecksC = new List<GameObject>();
+        CandyType lastTypeC = CandyType.NONE;
 
-        int currentCount = 0;
-
-        List<GameObject> PossibleChecks = new List<GameObject>();
-        CandyType lastType = CandyType.NONE;
-
-        var objects = GameObject.FindGameObjectsWithTag("Candy");
-        var objectCount = objects.Length;
-        foreach (var obj in objects)
+        var objectsC = GameObject.FindGameObjectsWithTag("Candy");
+        var objectCountC = objectsC.Length;
+        foreach (var objC in objectsC)
         {
-            if (obj.GetComponent<CandyBehaviour>().ColRow.x == col)
+            if (objC.GetComponent<CandyBehaviour>().ColRow.x == col)
             {
-
-                if(currentCount >= 3 && lastType != obj.GetComponent<CandyBehaviour>().type)
+                //objC.GetComponent<CandyBehaviour>().markedForReturn = true;
+                if (currentCountC >= 3 && lastTypeC != objC.GetComponent<CandyBehaviour>().type)
                 {
-                    MarkChecksForReturn(PossibleChecks);
+                    MarkChecksForReturn(PossibleChecksC);
                 }
 
-                switch (obj.GetComponent<CandyBehaviour>().type)
+                switch (objC.GetComponent<CandyBehaviour>().type)
                 {
                     case CandyType.CANDY_RED:
-                        if (lastType != CandyType.CANDY_RED)
+                        if (lastTypeC != CandyType.CANDY_RED)
                         {
-                            currentCount = 1;
-                            lastType = CandyType.CANDY_RED;
-                            if (PossibleChecks.Count > 0)
-                                PossibleChecks.Clear();
+                            currentCountC = 1;
+                            lastTypeC = CandyType.CANDY_RED;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
                         }
                         else
                         {
-                            currentCount++;
+                            currentCountC++;
                         }
-                        PossibleChecks.Add(obj);
+                        PossibleChecksC.Add(objC);
                         break;
                     case CandyType.CANDY_ORANGE:
-                        if (lastType != CandyType.CANDY_ORANGE)
+                        if (lastTypeC != CandyType.CANDY_ORANGE)
                         {
-                            currentCount = 1;
-                            lastType = CandyType.CANDY_ORANGE;
-                            if (PossibleChecks.Count > 0)
-                            PossibleChecks.Clear();
+                            currentCountC = 1;
+                            lastTypeC = CandyType.CANDY_ORANGE;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
                         }
                         else
                         {
-                            currentCount++;
+                            currentCountC++;
                         }
-                        PossibleChecks.Add(obj);
+                        PossibleChecksC.Add(objC);
                         break;
                     case CandyType.CANDY_YELLOW:
-                        if (lastType != CandyType.CANDY_YELLOW)
+                        if (lastTypeC != CandyType.CANDY_YELLOW)
                         {
-                            currentCount = 1;
-                            lastType = CandyType.CANDY_YELLOW;
-                            if (PossibleChecks.Count > 0)
-                            PossibleChecks.Clear();
+                            currentCountC = 1;
+                            lastTypeC = CandyType.CANDY_YELLOW;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
                         }
                         else
                         {
-                            currentCount++;
+                            currentCountC++;
                         }
-                        PossibleChecks.Add(obj);
+                        PossibleChecksC.Add(objC);
                         break;
                     case CandyType.CANDY_GREEN:
-                        if (lastType != CandyType.CANDY_GREEN)
+                        if (lastTypeC != CandyType.CANDY_GREEN)
                         {
-                            currentCount = 1;
-                            lastType = CandyType.CANDY_GREEN;
-                            if (PossibleChecks.Count > 0)
-                            PossibleChecks.Clear();
+                            currentCountC = 1;
+                            lastTypeC = CandyType.CANDY_GREEN;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
                         }
                         else
                         {
-                            currentCount++;
+                            currentCountC++;
                         }
-                        PossibleChecks.Add(obj);
+                        PossibleChecksC.Add(objC);
                         break;
                     case CandyType.CANDY_BLUE:
-                        if (lastType != CandyType.CANDY_BLUE)
+                        if (lastTypeC != CandyType.CANDY_BLUE)
                         {
-                            currentCount = 1;
-                            lastType = CandyType.CANDY_BLUE;
-                            if (PossibleChecks.Count > 0)
-                                PossibleChecks.Clear();
+                            currentCountC = 1;
+                            lastTypeC = CandyType.CANDY_BLUE;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
                         }
                         else
                         {
-                            currentCount++;
+                            currentCountC++;
                         }
-                        PossibleChecks.Add(obj);
+                        PossibleChecksC.Add(objC);
                         break;
                     case CandyType.CANDY_PURPLE:
-                        if (lastType != CandyType.CANDY_PURPLE)
+                        if (lastTypeC != CandyType.CANDY_PURPLE)
                         {
-                            currentCount = 1;
-                            lastType = CandyType.CANDY_PURPLE;
-                            if (PossibleChecks.Count > 0)
-                            PossibleChecks.Clear();
+                            currentCountC = 1;
+                            lastTypeC = CandyType.CANDY_PURPLE;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
                         }
                         else
                         {
-                            currentCount++;
+                            currentCountC++;
                         }
-                        PossibleChecks.Add(obj);
+                        PossibleChecksC.Add(objC);
                         break;
                 }
             }
         }
 
-        if (PossibleChecks.Count > 2)
+        if (PossibleChecksC.Count > 2)
         {
-            MarkChecksForReturn(PossibleChecks);
+            MarkChecksForReturn(PossibleChecksC);
         }
     }
+
+
+
+    private void CheckRow(int col)
+    {
+        int currentCountC = 7;
+
+        List<GameObject> PossibleChecksC = new List<GameObject>();
+        CandyType lastTypeC = CandyType.NONE;
+
+        var objectsC = GameObject.FindGameObjectsWithTag("Candy");
+        var objectCountC = objectsC.Length;
+        foreach (var objC in objectsC)
+        {
+            if (objC.GetComponent<CandyBehaviour>().ColRow.y == col)
+            {
+                if (currentCountC <= 5 && lastTypeC != objC.GetComponent<CandyBehaviour>().type)
+                {
+                    MarkChecksForReturn(PossibleChecksC);
+                }
+
+                switch (objC.GetComponent<CandyBehaviour>().type)
+                {
+                    case CandyType.CANDY_RED:
+                        if (lastTypeC != CandyType.CANDY_RED)
+                        {
+                            currentCountC = 7;
+                            lastTypeC = CandyType.CANDY_RED;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
+                        }
+                        else
+                        {
+                            currentCountC--;
+                        }
+                        PossibleChecksC.Add(objC);
+                        break;
+                    case CandyType.CANDY_ORANGE:
+                        if (lastTypeC != CandyType.CANDY_ORANGE)
+                        {
+                            currentCountC = 7;
+                            lastTypeC = CandyType.CANDY_ORANGE;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
+                        }
+                        else
+                        {
+                            currentCountC--;
+                        }
+                        PossibleChecksC.Add(objC);
+                        break;
+                    case CandyType.CANDY_YELLOW:
+                        if (lastTypeC != CandyType.CANDY_YELLOW)
+                        {
+                            currentCountC = 7;
+                            lastTypeC = CandyType.CANDY_YELLOW;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
+                        }
+                        else
+                        {
+                            currentCountC--;
+                        }
+                        PossibleChecksC.Add(objC);
+                        break;
+                    case CandyType.CANDY_GREEN:
+                        if (lastTypeC != CandyType.CANDY_GREEN)
+                        {
+                            currentCountC = 7;
+                            lastTypeC = CandyType.CANDY_GREEN;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
+                        }
+                        else
+                        {
+                            currentCountC--;
+                        }
+                        PossibleChecksC.Add(objC);
+                        break;
+                    case CandyType.CANDY_BLUE:
+                        if (lastTypeC != CandyType.CANDY_BLUE)
+                        {
+                            currentCountC = 7;
+                            lastTypeC = CandyType.CANDY_BLUE;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
+                        }
+                        else
+                        {
+                            currentCountC--;
+                        }
+                        PossibleChecksC.Add(objC);
+                        break;
+                    case CandyType.CANDY_PURPLE:
+                        if (lastTypeC != CandyType.CANDY_PURPLE)
+                        {
+                            currentCountC = 7;
+                            lastTypeC = CandyType.CANDY_PURPLE;
+                            if (PossibleChecksC.Count > 0)
+                                PossibleChecksC.Clear();
+                        }
+                        else
+                        {
+                            currentCountC--;
+                        }
+                        PossibleChecksC.Add(objC);
+                        break;
+                }
+            }
+        }
+
+        if (PossibleChecksC.Count <=6)
+        {
+            MarkChecksForReturn(PossibleChecksC);
+        }
+    }
+
+
 
     private void MarkChecksForReturn(List<GameObject> checksToReturn)
     {
         for (int i = 0; i < checksToReturn.Count; i++)
         {
-            checksToReturn[i].GetComponent<CandyBehaviour>().markedForReturn = true;
+            //checksToReturn[i].GetComponent<CandyBehaviour>().markedForReturn = true;
+            var colToReduce = checksToReturn[i].GetComponent<CandyBehaviour>().ColRow.x;
+
+            var objectsC = GameObject.FindGameObjectsWithTag("Column");
+            var objectCountC = objectsC.Length;
+            foreach (var objC in objectsC)
+            {
+                if(objC.GetComponent<ColumnBehaviour>().ColumnNum == colToReduce)
+                {
+                    objC.GetComponent<ColumnBehaviour>().EmptySlots++;
+                }
+            }
+            candyManager.ReturnCandy(checksToReturn[i]);
         }
     }
 
