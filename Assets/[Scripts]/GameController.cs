@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Y))
         {
-            CheckForHMatches();
+            //CheckForHMatches();
         }
         if(Input.GetKeyDown(KeyCode.P))
         {
