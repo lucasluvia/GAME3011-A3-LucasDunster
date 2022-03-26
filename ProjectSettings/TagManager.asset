@@ -8,6 +8,8 @@ TagManager:
   - DetectorNode
   - SpawnerNode
   - CandyRowTrigger
+  - Column
+  - Candy
   layers:
   - Default
   - TransparentFX

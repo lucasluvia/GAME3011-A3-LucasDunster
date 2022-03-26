@@ -11,6 +11,7 @@ public class ColumnBehaviour : MonoBehaviour
     CandyManager candyManager;
     SpawnerBehaviour spawnerBehaviour;
 
+    public bool isSpawnPaused = false;
 
     void Start()
     {
@@ -21,6 +22,9 @@ public class ColumnBehaviour : MonoBehaviour
     float elapsed = 0f;
     void Update()
     {
+        if (isSpawnPaused)
+            return;
+
         elapsed += Time.deltaTime;
         if (elapsed >= 1f)
         {

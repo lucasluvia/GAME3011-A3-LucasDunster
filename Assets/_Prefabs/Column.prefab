@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1024302562711278597}
   m_Layer: 5
   m_Name: Column
-  m_TagString: Untagged
+  m_TagString: Column
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,6 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ColumnNum: 0
   EmptySlots: 7
+  CanSpawn: 0
 --- !u!1001 &682473719355497176
 PrefabInstance:
   m_ObjectHideFlags: 0

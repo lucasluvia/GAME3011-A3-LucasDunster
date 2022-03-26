@@ -16,6 +16,7 @@ public class CandyBehaviour : MonoBehaviour
     public bool isBlock = false;
 
     public bool isSelected;
+    public bool markedForReturn;
 
     public Vector2 ColRow;
 

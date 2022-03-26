@@ -10,10 +10,11 @@ public class RowBehaviour : MonoBehaviour
     {
         if(other.CompareTag("CandyRowTrigger"))
         {
-            if (other.gameObject.GetComponent<CandyBehaviour>())
-                other.gameObject.GetComponent<CandyBehaviour>().ColRow.y = RowNum;
+            var candy = other.transform.parent.gameObject.GetComponent<CandyBehaviour>();
 
-            Debug.Log("Collided with Candy's Row Trigger");
+            if (candy.ColRow.y != RowNum)
+                candy.ColRow.y = RowNum;
+
         }
     }
 
