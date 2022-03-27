@@ -20,6 +20,7 @@ public class CandyBehaviour : MonoBehaviour
 
     public Vector2 ColRow;
 
+    public bool isClickable;
     
     void Start()
     {
@@ -40,7 +41,7 @@ public class CandyBehaviour : MonoBehaviour
         }
     }
 
-    void UpdateCandyImage()
+    public void UpdateCandyImage()
     {
         if(!isBomb)
         {
@@ -92,6 +93,11 @@ public class CandyBehaviour : MonoBehaviour
 
         }
         
+    }
+
+    public void OnCandyClicked()
+    {
+        gameController.SelectedCandies.Add(gameObject);
     }
 
 }

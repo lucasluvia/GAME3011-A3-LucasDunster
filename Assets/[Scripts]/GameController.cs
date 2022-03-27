@@ -25,8 +25,15 @@ public class GameController : MonoBehaviour
     public Sprite BlueBomb;
     public Sprite PurpleBomb;
 
-    CandyBehaviour temp;
+    CandyBehaviour temp = null;
     public CandyManager candyManager;
+
+    public List<GameObject> SelectedCandies = new List<GameObject>();
+
+    CandyBehaviour selectedTileB;
+    int selectedTiles;
+
+
 
     void Update()
     {
@@ -42,6 +49,13 @@ public class GameController : MonoBehaviour
         {
             ToggleSpawningPause(false);
         }
+
+        if(SelectedCandies.Count > 1)
+        {
+            SwapTiles(SelectedCandies[0], SelectedCandies[1]);
+        }
+
+
     }
 
 
@@ -62,7 +76,7 @@ public class GameController : MonoBehaviour
         var objectCount = objects.Length;
         foreach (var obj in objects)
         {
-            //obj.GetComponent<Button>().interactable = !isPaused;
+            obj.GetComponent<CandyBehaviour>().isClickable = !isPaused;
         }
     }
 
@@ -110,8 +124,7 @@ public class GameController : MonoBehaviour
         var objectsC = GameObject.FindGameObjectsWithTag("Candy");
         var objectCountC = objectsC.Length;
 
-        // Sort the objects.
-
+        // Sort the objects. By default row objects are unsorted
 
         foreach (var objC in objectsC)
         {
@@ -123,7 +136,7 @@ public class GameController : MonoBehaviour
 
         CurrentRowObjects.Sort(SortByCol);
 
-                foreach (var objC in CurrentRowObjects)
+        foreach (var objC in CurrentRowObjects)
         {
             
             if (objC.GetComponent<CandyBehaviour>().ColRow.y == row)
@@ -233,7 +246,6 @@ public class GameController : MonoBehaviour
             MarkChecksForReturn(PossibleChecksC);
         }
     }
-
 
     private void CheckColumn(int col)
     {
@@ -351,7 +363,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-
     private void MarkChecksForReturn(List<GameObject> checksToReturn)
     {
         for (int i = 0; i < checksToReturn.Count; i++)
@@ -372,32 +383,51 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void SwapTiles(CandyBehaviour c1, CandyBehaviour c2)
+    public void SelectTile(GameObject tile)
     {
-        if ((c1.type == CandyType.BOX || c1.type == CandyType.NONE) ||  // make sure c1 is movable and has a type assigned
-            (c2.type == CandyType.BOX || c2.type == CandyType.NONE) ||  // make sure c2 is movable and has a type assigned
-            (c1.type == c2.type))                                       // make sure c1 and c2 are unique to one another
+        SelectedCandies.Add(tile);
+    }
+
+    public void SwapTiles(GameObject c1, GameObject c2)
+    {
+        var c1_behaviour = c1.GetComponent<CandyBehaviour>();
+        var c2_behaviour = c2.GetComponent<CandyBehaviour>();
+
+        if ((c1_behaviour.type == CandyType.BOX || c1_behaviour.type == CandyType.NONE) ||  // make sure c1 is movable and has a type assigned
+            (c2_behaviour.type == CandyType.BOX || c2_behaviour.type == CandyType.NONE) ||  // make sure c2 is movable and has a type assigned
+            (c1_behaviour.type == c2_behaviour.type))                                       // make sure c1 and c2 are unique to one another
         {
             return;
         }
 
+        CandyType tempType = c1_behaviour.type;
+        bool tempIsBomb = c1_behaviour.isBomb;
+
+        //Debug.Log("Temp (" + temp.type + ")");
+        Debug.Log("Before (" + c1_behaviour.type + "," + c2_behaviour.type + ")");
+
         //set new type
-        temp.type = c1.type;
-        c1.type = c2.type;
-        c2.type = c1.type;
+        c1_behaviour.type = c2_behaviour.type;
+        c2_behaviour.type = tempType;
+
+        //Debug.Log("Temp (" + temp.type + ")");
+        Debug.Log("After (" + c1_behaviour.type + "," + c2_behaviour.type + ")");
 
         //set isBomb
-        temp.isBomb = c1.isBomb;
-        c1.isBomb = c2.isBomb;
-        c2.isBomb = c1.isBomb;
+        //temp.isBomb = c1_behaviour.isBomb;
+        c1_behaviour.isBomb = c2_behaviour.isBomb;
+        c2_behaviour.isBomb = tempIsBomb;
 
         //reset temp
-        temp.type = CandyType.NONE;
-        temp.isBomb = false;
+        tempType = CandyType.NONE;
+        tempIsBomb = false;
 
         //trigger swap for tiles
-        c1.swapTrigger = true;
-        c2.swapTrigger = true;
+        c1_behaviour.swapTrigger = true;
+        c2_behaviour.swapTrigger = true;
+
+        SelectedCandies.Clear();
+
 
     }
 
