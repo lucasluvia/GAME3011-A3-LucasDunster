@@ -34,16 +34,15 @@ public class GameController : MonoBehaviour
     int selectedTiles;
 
 
-
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            CheckForVMatches();
+            CheckForMatches();
         }
         if(Input.GetKeyDown(KeyCode.Y))
         {
-            CheckForHMatches();
+            //CheckForHMatches();
         }
         if(Input.GetKeyDown(KeyCode.P))
         {
@@ -53,12 +52,12 @@ public class GameController : MonoBehaviour
         if(SelectedCandies.Count > 1)
         {
             SwapTiles(SelectedCandies[0], SelectedCandies[1]);
+
+            SelectedCandies.Clear();
         }
 
 
     }
-
-
 
     public void ToggleSpawningPause(bool isPaused)
     {
@@ -80,6 +79,12 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void CheckForMatches()
+    {
+        CheckForVMatches();
+        CheckForHMatches();
+    }
+
     public void CheckForVMatches()
     {
         ToggleMatchingPause(true);
@@ -99,6 +104,9 @@ public class GameController : MonoBehaviour
 
     public void CheckForHMatches()
     {
+        ToggleMatchingPause(true);
+        ToggleSpawningPause(true);
+
         CheckRow(0);
         CheckRow(1);
         CheckRow(2);
@@ -106,6 +114,8 @@ public class GameController : MonoBehaviour
         CheckRow(4);
         CheckRow(5);
         CheckRow(6);
+
+        ToggleSpawningPause(false);
     }
 
     static int SortByCol(GameObject c1, GameObject c2)
@@ -144,7 +154,7 @@ public class GameController : MonoBehaviour
 
 
 
-                Debug.Log("(" + objC.GetComponent<CandyBehaviour>().ColRow.x + "," + objC.GetComponent<CandyBehaviour>().ColRow.y + ")");
+                //Debug.Log("(" + objC.GetComponent<CandyBehaviour>().ColRow.x + "," + objC.GetComponent<CandyBehaviour>().ColRow.y + ")");
                 //objC.GetComponent<CandyBehaviour>().markedForReturn = true;
                 if (currentCountC >= 3 && lastTypeC != objC.GetComponent<CandyBehaviour>().type)
                 {
@@ -426,7 +436,6 @@ public class GameController : MonoBehaviour
         c1_behaviour.swapTrigger = true;
         c2_behaviour.swapTrigger = true;
 
-        SelectedCandies.Clear();
 
 
     }

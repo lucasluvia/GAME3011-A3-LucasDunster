@@ -97,7 +97,8 @@ public class CandyBehaviour : MonoBehaviour
 
     public void OnCandyClicked()
     {
-        gameController.SelectedCandies.Add(gameObject);
+        if (isClickable)
+            gameController.SelectedCandies.Add(gameObject);
     }
 
 }
