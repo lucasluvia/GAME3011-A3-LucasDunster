@@ -58,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ColumnNum: 0
   EmptySlots: 7
-  CanSpawn: 0
+  isSpawnPaused: 0
 --- !u!1001 &682473719355497176
 PrefabInstance:
   m_ObjectHideFlags: 0

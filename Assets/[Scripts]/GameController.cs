@@ -34,19 +34,22 @@ public class GameController : MonoBehaviour
     int selectedTiles;
 
 
+    float elapsed = 0f;
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T))
+        elapsed += Time.deltaTime;
+        if (CheckIsFull())
         {
+            elapsed = elapsed % 1f;
             CheckForMatches();
-        }
-        if(Input.GetKeyDown(KeyCode.Y))
-        {
-            //CheckForHMatches();
-        }
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            ToggleSpawningPause(false);
+            if(!CheckIsFull())
+            {
+                ToggleMatchingPause(true);
+            }
+            else
+            {
+                ToggleMatchingPause(false);
+            }
         }
 
         if(SelectedCandies.Count > 1)
@@ -81,15 +84,18 @@ public class GameController : MonoBehaviour
 
     public void CheckForMatches()
     {
+        ToggleMatchingPause(true);
+        ToggleSpawningPause(true);
+
         CheckForVMatches();
         CheckForHMatches();
+
+        ToggleMatchingPause(false);
+        ToggleSpawningPause(false);
     }
 
     public void CheckForVMatches()
     {
-        ToggleMatchingPause(true);
-        ToggleSpawningPause(true);
-
         CheckColumn(0);
         CheckColumn(1);
         CheckColumn(2);
@@ -97,16 +103,10 @@ public class GameController : MonoBehaviour
         CheckColumn(4);
         CheckColumn(5);
         CheckColumn(6);
-
-        
-        ToggleSpawningPause(false);
     }
 
     public void CheckForHMatches()
     {
-        ToggleMatchingPause(true);
-        ToggleSpawningPause(true);
-
         CheckRow(0);
         CheckRow(1);
         CheckRow(2);
@@ -114,8 +114,6 @@ public class GameController : MonoBehaviour
         CheckRow(4);
         CheckRow(5);
         CheckRow(6);
-
-        ToggleSpawningPause(false);
     }
 
     static int SortByCol(GameObject c1, GameObject c2)
@@ -440,7 +438,21 @@ public class GameController : MonoBehaviour
 
     }
 
+    public bool CheckIsFull()
+    {
+        var objectsC = GameObject.FindGameObjectsWithTag("Candy");
+        var objectCountC = objectsC.Length;
+        if (objectCountC == 49)
+        {
+            return (objectsC[48].transform.position.y < 900);
+        }
+        else
+        {
+            return false;
+        }
 
+
+    }
 
 
 }

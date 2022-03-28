@@ -430,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 631517975}
     - target: {fileID: 1024302562711278597, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: isSpawnPaused
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7932147922519569585, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: m_Name
@@ -682,7 +682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1024302562711278597, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: isSpawnPaused
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7932147922519569585, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: m_Name
@@ -914,6 +914,7 @@ MonoBehaviour:
   BlueBomb: {fileID: 21300000, guid: 19a072425c5f2a642bbb3ebed620c1f8, type: 3}
   PurpleBomb: {fileID: 21300000, guid: 91cf37e0e6b57f444863db2a9587eafb, type: 3}
   candyManager: {fileID: 631517975}
+  SelectedCandies: []
 --- !u!114 &631517974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1024302562711278597, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: isSpawnPaused
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7932147922519569585, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: m_Name
@@ -1350,7 +1351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1024302562711278597, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: isSpawnPaused
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7932147922519569585, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: m_Name
@@ -1666,7 +1667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1024302562711278597, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: isSpawnPaused
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7932147922519569585, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: m_Name
@@ -2019,7 +2020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1024302562711278597, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: isSpawnPaused
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7932147922519569585, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: m_Name
@@ -2686,7 +2687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1024302562711278597, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: isSpawnPaused
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7932147922519569585, guid: 299d555e00eadab478c98860bb2dcfed, type: 3}
       propertyPath: m_Name
