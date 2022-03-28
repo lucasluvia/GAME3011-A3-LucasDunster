@@ -146,7 +146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &199062127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,8 +507,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Welcome!\nThis is the canvas that would normally contain gameplay UI.
     \nThis project demontrates a Match 3 minigame that would be a part of a bigger
-    game.\n[DESC]\nThe minigame ends when you [DESC]\nFor Debug purposes [OPT].\n\nPress
-    'space' to switch between this canvas and the minigame at any time. "
+    game.\nClick on a candy to move it, if you get three or more in a row they dissapear.\n\nPress
+    'space' to switch between this canvas and the minigame at any time. The game
+    will pause while you're gone.\n\nI had some trouble getting this project done.
+    It's 100% my fault. This is what I was able to get done. I know I can do everything
+    else but I just messed up with my time management. I have no excuse, I'm sorry
+    for what I had to put forwards."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1485,7 +1489,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971932445}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a223883cb4e7f04ab8f4ed284e3acf4, type: 3}
   m_Name: 

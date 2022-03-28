@@ -85,13 +85,11 @@ public class GameController : MonoBehaviour
     public void CheckForMatches()
     {
         ToggleMatchingPause(true);
-        ToggleSpawningPause(true);
 
         CheckForVMatches();
         CheckForHMatches();
 
         ToggleMatchingPause(false);
-        ToggleSpawningPause(false);
     }
 
     public void CheckForVMatches()
